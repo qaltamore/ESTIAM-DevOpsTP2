@@ -1,0 +1,13 @@
+version: '2'
+services:
+  db:
+    image: mysql:5
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD:qaltamore
+
+  app:
+    build:
+      dockerfile: Dockerfile-dev
+      context: .
+    command: node server.js
