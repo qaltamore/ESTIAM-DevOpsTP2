@@ -1,13 +1,13 @@
-version: '2'
+version: '3'
 services:
-  db:
-    image: mysql:5
-    restart: always
+  api: 
+    build: .
+    container_name: api
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+  mysql:
+    image: mysql
     environment:
-      - MYSQL_ROOT_PASSWORD:qaltamore
-
-  app:
-    build:
-      dockerfile: Dockerfile-dev
-      context: .
-    command: node server.js
+      MYSQL_ROOT_PASSWORD: qaltamore

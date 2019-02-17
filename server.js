@@ -29,6 +29,7 @@ con.connect(function(err) {
 
 // Chargement de la page index.html
 app.get('/', function (req, res, next) {
+    console.log("test")
     res.send("<h1>Combien d'heures pensez-vous que j'ai passé sur cette évaluation ? : " + number + "</h1>" +
             "<p>"+message+"</p>" +
             "<form method='POST' action=''>" +
@@ -39,6 +40,7 @@ app.get('/', function (req, res, next) {
 })
 
 app.post('/', function (req, res, next) {
+    console.log("increment")
     number++
     con.connect(function(err) {
         con.query("UPDATE numbers SET value='"+number+"' WHERE name='defaultNumber'", function(err, res) {
